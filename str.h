@@ -10,19 +10,24 @@ using namespace std;
 
 class str
 {
+
+  // input and output
+  friend ostream & operator<<(ostream &out, str &s);
+  friend istream & operator>>(istream &in, str &s);
+
   private:
     char* _buf;  // pointer to the underlying storage
     int _n;      // size of the buffer
 
   public:
-  
+
     // constructors of various forms
-    
-    str();      
+
+    str();
     str(char ch);
     str(const char* c_str);
 
-    // TODO 1. Implement copy constructor 
+    // TODO 1. Implement copy constructor
     str(const str &);
 
     // lets not forget the destructor
@@ -37,13 +42,18 @@ class str
     void print();
 
     // TODO 2. Implement the following member functions:
-  
+
     // clear erases the contents of the string, which becomes an empty string (with a length of 0 characters).
     void clear();
 
     // append extends the string by appending additional characters at the end of its current value:
     void append(const str& str);
 
+    // assignment operator
+    str & operator=(str &c);
+
+    // concatination operator
+    str & operator+(str &s1);
 
   // TODO 3. Implement the following swap functions that exchanges the values of two strings
   friend void swap(str &, str &);
